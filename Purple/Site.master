@@ -1,0 +1,73 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="Site.master.cs" Inherits="SiteMaster" %>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head runat="server">
+    <title></title>    
+    <meta name="Description" CONTENT="Author: O Purple, Rede social sobre a ciencia dos dados." />
+    <link rel="shortcut icon" href='~/images/ico/logo.ico' />
+
+    <link href="~/Styles/Site.css" rel="stylesheet" type="text/css" />
+<%--    <script src="Scripts/jquery.ui.datepicker-pt-BR.js" type="text/javascript"></script>--%>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+    <script src="Scripts/jquery.maskMoney.min.js" type="text/javascript"></script>
+    <script src="Scripts/jquery.min.js" type="text/javascript"></script>
+    <script src="Scripts/mascaras.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+            function openForm() {
+                document.getElementById("myForm").style.display = "block";
+            }
+
+            function closeForm() {
+                document.getElementById("myForm").style.display = "none";
+            }
+    </script>
+    <asp:ContentPlaceHolder ID="HeadContent" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form runat="server">    
+    <asp:ScriptManager ID="scm" runat="server" EnablePageMethods="true" ScriptMode="Auto">
+    </asp:ScriptManager>
+    <div class="page">
+        <div class="header">
+            <div class="title">
+                <asp:LinkButton ID="lnkLogo" runat="server" style="color:White;"><img src="~/images/logo/logo_name.png" runat="server" alt="Purple" width="260" /></asp:LinkButton>
+            </div>
+            <div id="semLogin" runat="server" class="loginDisplay">
+                    [ <a href="~/Register.aspx" ID="HeadCadastreStatus" runat="server">Cadastre-se</a> ]
+                    [ <a href="~/Login.aspx" ID="HeadLoginStatus" runat="server">Entrar</a> ]
+            </div>
+            <div id="comLogin" runat="server" class="loginDisplay">
+                <asp:Literal ID="ltrLink" runat="server"></asp:Literal>
+                    [ <a href="~/Account/Inicio.aspx" ID="A2" runat="server">Início</a> ]
+                    [ <a href="~/Account/Profile.aspx" ID="A1" runat="server">Meu Perfil</a> ]
+                    [ <a href="" ID="A4" runat="server">Messenger</a> ]
+                    [ <a href="~/Account/Register.aspx" ID="A3" runat="server">Configurações</a> ]
+                    [ <asp:LinkButton ID="lnkSair"  runat="server" onclick="lnkSair_Click">Sair</asp:LinkButton> ] <br /><br />
+               Olá <b><asp:Label ID="lblNome" runat="server" Text=""></asp:Label></b> | Pesquisar 
+                    <asp:TextBox ID="txt_busca" runat="server" 
+                        placeholder="digite para pesquisar..." ontextchanged="txt_busca_TextChanged"></asp:TextBox>
+            </div>
+            <div id="dvMenu" runat="server" class="clear hideSkiplink">
+                <asp:Menu ID="NavigationMenu" runat="server" CssClass="menu" EnableViewState="false" IncludeStyleBlock="false" Orientation="Horizontal">
+                    <Items>
+                        <asp:MenuItem NavigateUrl="~/Default.aspx" Text="Home"/>
+                        <asp:MenuItem NavigateUrl="~/About.aspx" Text="Sobre"/>
+                    </Items>
+                </asp:Menu>
+            </div>
+        </div>
+        <div class="main">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server"/>
+        </div>
+        <div class="clear">
+        </div>
+    </div>
+    <div class="footer">
+        Fale Conosco - <a href='mailto:contato@opurple.com.br'>contato@opurple.com.br</a> - oPurple Version Test 2019.
+    </div>
+    </form>
+</body>
+</html>
